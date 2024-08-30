@@ -1,0 +1,17 @@
+<?php
+/** @var \Magento\Store\Block\Switcher $block */
+$stores = $block->getStores();
+$currentStore = $block->getCurrentStoreId();
+?>
+
+<div class="language-switcher">
+    <?php foreach ($stores as $store): ?>
+        <?php if ($store->getId() !== $currentStore): ?>
+            <a href="#" data-post='<?= /* @noEscape */ $block->getTargetStorePostData($store) ?>'>
+                <button class="language-switcher-btn">
+                    <?= strtoupper($store->getCode()) ?>
+                </button>
+            </a>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</div>
